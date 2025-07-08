@@ -25,6 +25,12 @@ body {
   width: 400px;
 }
 
+#settingsImg {
+ position: absolute;
+ top: 30px;
+ right: calc(50vw - 210px);
+}
+
 h1 {
   letter-spacing: 1px;
   margin: 0;
@@ -65,12 +71,27 @@ h4 {
   margin: 5px 0;
 }
 
-.money.plus {
-  color: #2ecc71;
+.categoryBtn {
+  position: relative;
+  height: 35px;
+  width: 35px;
+  display: none;
 }
 
-.money.minus {
-  color: #c0392b;
+#categoryIcons {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  left: 7.5px;
+}
+
+#category {
+  height: 42px;
+  width: 42px;
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 2px;
+  margin-right: 10px;
 }
 
 label {
@@ -78,25 +99,32 @@ label {
   margin: 10px 0;
 }
 
+input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
 input[type='text'],
-input[type='number'] {
+select {
   border: 1px solid #dedede;
   border-radius: 2px;
   display: block;
   font-size: 16px;
   padding: 10px;
   width: 100%;
+  background-color: #fff;
 }
 
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
   box-shadow: var(--box-shadow);
-  color: #fff;
-  border: 0;
+  border-radius: 2px;
+  color: #333;
   display: block;
   font-size: 16px;
-  margin: 10px 0 30px;
+  font-weight: 500;
+  margin: 30px 0;
   padding: 10px;
   width: 100%;
 }
@@ -117,18 +145,20 @@ input[type='number'] {
   box-shadow: var(--box-shadow);
   color: #333;
   display: flex;
-  justify-content: space-between;
   position: relative;
   padding: 10px;
   margin: 10px 0;
+  order: 1;
 }
 
-.list li.plus {
-  border-right: 5px solid #2ecc71;
+.list li img {
+  order: 2;
 }
 
-.list li.minus {
-  border-right: 5px solid #c0392b;
+.list li span {
+  order: 3;
+  position: absolute;
+  right: 10px;
 }
 
 .delete-btn {
