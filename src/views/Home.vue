@@ -18,6 +18,9 @@ import TransactionList from '../components/TransactionList.vue'
 import AddTransaction from '../components/AddTransaction.vue'
 import {computed, ref, onMounted} from 'vue';
 import {useToast} from 'vue-toastification';
+import { useAppStore } from '../stores/app.js'
+
+const store = useAppStore()
 
 const properties = defineProps({
   selectedOptions: {
@@ -27,15 +30,15 @@ const properties = defineProps({
 
 const toast = useToast();
 
-onMounted (() => {
+/* onMounted (() => {
 
-  const savedTransactions = JSON.parse(localStorage.getItem('transactions'));
+  const savedTransactions = store.selectedCategories;
 
-  if(savedTransactions) transactionList.value = savedTransactions;
-})
+  if(savedTransactions) transactionList.value = JSON.parse(JSON.stringify(savedTransactions)) || [];
+}) */
 
-const updateLocalStorage = () => {
-  localStorage.setItem('transactions', JSON.stringify(transactionList.value))
+const updateSelectedCategories = () => {
+  store.setSelectedCategories(transactionList.value)
 }
 
 const transactionList = ref([]);
@@ -43,7 +46,7 @@ const transactionList = ref([]);
 const deleteTransaction = (id) => {
   transactionList.value = transactionList.value.filter((transaction) => transaction.id !== id);
 
-  updateLocalStorage();
+  updateSelectedCategories();
 
   toast.success('Transaction deleted')
 }
@@ -60,7 +63,7 @@ const addTransaction = (transaction) => {
     category: transaction.category,
     });
 
-    updateLocalStorage();
+    updateSelectedCategories();
 
     toast.success('Transaction added')
 }

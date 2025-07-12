@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useCategoryStore = defineStore('category', () => {
+export const useAppStore = defineStore('app', () => {
   const selectedCategories = ref([])
 
   const setSelectedCategories = (categories) => {

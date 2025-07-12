@@ -1,7 +1,7 @@
 <template>
   <h1>Settings</h1>
 
-  <div>
+  <div class="container">
     <h3>Kategorien wählen</h3>
     <div v-for="option in options" :key="option.id" class="checkbox-item">
       <input
@@ -16,15 +16,15 @@
     </div>
   </div>
 
-  <button class="btn" @click="saveChanges">BACK</button>
+  <button class="btn" @click="saveChanges">SAVE</button>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router';
-import {ref} from 'vue'
-import { useCategoryStore } from '../stores/categories.js'
+import {ref, onMounted} from 'vue'
+import { useAppStore } from '../stores/app.js'
 
-const store = useCategoryStore()
+const store = useAppStore()
 
 const router = useRouter()
 
@@ -51,9 +51,14 @@ const options = ref([
 
 const selectedOptions = ref([])
 
+/* onMounted(() => {
+  const storedCategories = store.selectedCategories;
+  selectedOptions.value = storedCategories
+}) */
+
 const saveChanges = () => {
   store.setSelectedCategories(options.value.filter((option)=> selectedOptions.value.some((selectedOption) => selectedOption === option.value)))
-  router.go(-1)
+  router.push('/')
 }
 
 </script>
