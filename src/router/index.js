@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Settings from '../views/Settings.vue'
 import Overview from '../views/Overview.vue'
-import Goals from '../views/Goals.vue'
+import Limits from '../views/Limits.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,9 +23,9 @@ const router = createRouter({
       component: Overview,
     },
     {
-      path: '/goals',
-      name: 'goals',
-      component: Goals,
+      path: '/limits',
+      name: 'limits',
+      component: Limits,
     },
     {
       path: '/about',

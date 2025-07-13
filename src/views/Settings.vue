@@ -17,6 +17,7 @@
   </div>
 
   <button class="btn" @click="saveChanges">SAVE</button>
+  <button class="backBtn" @click="goBack">BACK</button>
 </template>
 
 <script setup>
@@ -25,7 +26,6 @@ import {ref, onMounted} from 'vue'
 import { useAppStore } from '../stores/app.js'
 
 const store = useAppStore()
-
 const router = useRouter()
 
 const emit = defineEmits(['categoriesSelected'])
@@ -51,14 +51,17 @@ const options = ref([
 
 const selectedOptions = ref([])
 
-/* onMounted(() => {
-  const storedCategories = store.selectedCategories;
-  selectedOptions.value = storedCategories
-}) */
+onMounted(() => {
+  const storedCategories = JSON.parse(localStorage.getItem('transactionList'));
+  if(storedCategories) selectedOptions.value = storedCategories.map(item => item.category.id)
+})
 
 const saveChanges = () => {
   store.setSelectedCategories(options.value.filter((option)=> selectedOptions.value.some((selectedOption) => selectedOption === option.value)))
   router.push('/')
 }
+
+const goBack = () => router.push('/')
+
 
 </script>

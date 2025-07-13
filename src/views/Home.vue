@@ -30,15 +30,17 @@ const properties = defineProps({
 
 const toast = useToast();
 
-/* onMounted (() => {
+onMounted (() => {
 
-  const savedTransactions = store.selectedCategories;
+  const savedTransactions = JSON.parse(localStorage.getItem('transactionList'));
 
-  if(savedTransactions) transactionList.value = JSON.parse(JSON.stringify(savedTransactions)) || [];
-}) */
+  if(savedTransactions) transactionList.value = savedTransactions;
+})
 
 const updateSelectedCategories = () => {
-  store.setSelectedCategories(transactionList.value)
+  localStorage.setItem('transactionList', JSON.stringify(transactionList.value))
+
+  store.setTransactionList(transactionList.value)
 }
 
 const transactionList = ref([]);

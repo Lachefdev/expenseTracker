@@ -1,7 +1,7 @@
 <template>
 
    <header>
-    <router-link to="goals">
+    <router-link to="/limits">
       <img id="goalImg" src="../icons/goal.svg"/>
     </router-link>
 
