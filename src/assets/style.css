@@ -93,7 +93,7 @@ label {
   margin: 10px 0;
 }
 
-input[type=checkbox] {
+input[type='checkbox'] {
   width: 15px;
   height: 15px;
   margin-right: 5px;
@@ -182,50 +182,14 @@ header {
   margin-top: 30px;
 }
 
-main {
-  display: grid;
-  gap: 15px;
-  padding: 0 20px;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-}
-
-.chartItem {
-  height: 50px;
-  border: 1px solid #333;
-  width: 100%;
-  margin-bottom: 10px;
-  overflow: hidden;
+.chartContainer {
   position: relative;
-  display: flex;
-  align-items: flex-end; /* Inhalt am unteren Rand ausrichten */
-}
-
-footer {
-  display: grid;
-  gap: 15px;
-  padding: 0 20px;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-}
-
-.chartIcon {
-  display: flex;
-  justify-content: center;
-}
-
-.chartIcon img {
-  text-align: center;
-  width: 35px;
-  height: 35px;
-}
-
-.progressFill {
   width: 100%;
-  height: 0%;
-  transition: height 0.4s ease;
+  height: 300px;
 }
 
 .buttons {
   display: flex;
   justify-content: space-between;
-  gap: 20px
+  gap: 20px;
 }

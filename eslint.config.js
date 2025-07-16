@@ -20,6 +20,17 @@ export default defineConfig([
     },
   },
 
+  {
+    extends: [
+      'plugin:editorconfig/noconflict',
+      'airbnb-base',
+      'plugin:vue/vue3-recommended',
+      'plugin:unicorn/recommended',
+      'plugin:security/recommended-legacy',
+      'prettier',
+    ],
+  },
+
   js.configs.recommended,
   ...pluginVue.configs['flat/essential'],
   skipFormatting,
