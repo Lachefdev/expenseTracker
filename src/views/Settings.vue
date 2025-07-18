@@ -123,7 +123,7 @@ const saveChanges = () => {
 
 const handleInput = (event) => {
   options.value.push({
-    id: event.target.value.toLowerCase(),
+    id: 'new',
     value: event.target.value.toLowerCase(),
     label: event.target.value,
     icon: 'new',
