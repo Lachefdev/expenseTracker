@@ -26,7 +26,7 @@
       class="backBtn"
       @click="goBack"
     >
-      BACK
+      << BACK
     </button>
   </div>
 </template>

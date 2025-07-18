@@ -185,7 +185,7 @@ header {
 .chartContainer {
   position: relative;
   width: 100%;
-  height: 300px;
+  max-height: 300px;
 }
 
 .buttons {
@@ -204,4 +204,18 @@ header {
   float: right;
   top: 16px;
   cursor: pointer;
+}
+
+.setLimit {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.backBtn {
+  border: unset;
+  padding: 10px;
+  background-color: cornsilk;
+  margin-bottom: 30px;
+  font-size: 16px;
 }

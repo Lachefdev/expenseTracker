@@ -41,7 +41,7 @@
     class="backBtn"
     @click="goBack"
   >
-    BACK
+    << BACK
   </button>
 </template>
 
