@@ -2,16 +2,17 @@
   <h1>Overview</h1>
   <div class="container">
     <div class="chartContainer">
-      <Pie
-        :data="computedPiechartData"
-        :options="pieChartOptions"
-      />
-    </div>
-    <br /><br />
-    <div class="chartContainer">
       <Bar
         :data="computedBarchartData"
         :options="barChartOptions"
+      />
+    </div>
+    <br /><br />
+
+    <div class="chartContainer">
+      <Pie
+        :data="pieChartData"
+        :options="pieChartOptions"
       />
     </div>
 
@@ -31,7 +32,8 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
+import { saveAs } from 'file-saver'
 import { useAppStore } from '../stores/app.js'
 import { useCategories } from '../composables/useCategories.js'
 import { useRouter } from 'vue-router'
@@ -132,7 +134,7 @@ const pieLabels = Object.keys(summarizedExpenses)
 const pieValues = Object.values(summarizedExpenses)
 const pieColors = expenses.map((item) => categoryColor(item.category.id))
 
-const computedPiechartData = computed(() => ({
+const pieChartData = computed(() => ({
   labels: pieLabels,
   datasets: [
     {
@@ -184,4 +186,16 @@ const barChartOptions = {
 }
 
 const goBack = () => router.push('/')
+
+const exportList = () => {
+  const daten = transactionList.value.map(({ text, amount }) => ({ Text: text, Amount: amount }))
+  console.log(daten)
+
+  const headers = Object.keys(daten[0]).join(',')
+  const rows = daten.map((row) => Object.values(row).join(','))
+  const csvContent = [headers, ...rows].join('\n')
+
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+  saveAs(blob, 'daten.csv')
+}
 </script>

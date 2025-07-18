@@ -17,6 +17,7 @@ export const useCategories = () => {
       business: '#a2c4c9',
       rubbish: '#b6d7a8',
       communication: '#eeeeee',
+      new: ' #d7bde2',
     }
 
     return categoryColor[value]

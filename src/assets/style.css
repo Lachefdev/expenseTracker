@@ -193,3 +193,15 @@ header {
   justify-content: space-between;
   gap: 20px;
 }
+
+.newOption {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-item span {
+  position: relative;
+  float: right;
+  top: 16px;
+  cursor: pointer;
+}
